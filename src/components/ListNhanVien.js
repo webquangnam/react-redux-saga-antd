@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { listNhanViens, delNhanViens } from '../actions/nhanVienActions';
 import FormSubmit from './FormSubmit';
 import {
-    Table, Divider, Icon
+    Table, Divider, Icon, message, Modal
   } from 'antd';
 
 
@@ -42,8 +42,22 @@ clickToItem(item){
 }
 deleteItem(item){
   //console.log('itemDel',item);
-  this.props.delNhanViens(JSON.stringify(item));
-  this.props.listNhanViens();
+  let that = this;
+  Modal.confirm({
+    title: 'Bạn muốn xoá?',
+    content: 'Nhấn Đồng ý để xác nhận xóa',
+    okText: 'Đồng ý',
+    okType: 'danger',
+    cancelText: 'Không xóa',
+    onOk() {
+        that.props.delNhanViens(JSON.stringify(item));
+        message.success('Đã xóa');
+        that.props.listNhanViens();
+    },
+    onCancel() {
+      console.log('Cancel');
+    },
+  });
 }
 actionContent(item) {
   return(

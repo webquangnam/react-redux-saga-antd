@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addNhanViens, listNhanViens, editNhanViens } from '../actions/nhanVienActions';
-import {Button, Modal, Form, Input} from 'antd';
+import {Button, Modal, Form, Input, message} from 'antd';
 
 const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
   // eslint-disable-next-line
@@ -65,7 +65,8 @@ export class FormSubmit extends Component {
       super(props);
       this.state = {
         visible: false,
-        editText:'Thêm'
+        editText:'Thêm',
+        status : false
       }
       
   }
@@ -92,8 +93,12 @@ export class FormSubmit extends Component {
       console.log('item', item)
       if(this.props.edit){
         this.props.editNhanViens(item);
+        message.success('Sửa thành công');
+        message.success('Sửa thành công');
       }else{
         this.props.addNhanViens(item);
+        message.success('Thêm thành công');
+        message.success('Thêm thành công');
       }
       this.props.listNhanViens();
 
@@ -106,8 +111,7 @@ export class FormSubmit extends Component {
   saveFormRef = (formRef) => {
     this.formRef = formRef;
   }
-
-      
+  
   render() {
     //console.log(this.props.edit)
     //console.log(this.state.visible)

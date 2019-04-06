@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
-//import moment from 'moment';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import routes from "./routes";
+//import MenuLeft from "./components/Parts/MenuLeft";
 import Siderbar from './components/Slidebar';
-import ListNhanVien from './components/ListNhanVien';
+// import ListNhanVien from './components/ListNhanVien';
 
 import {
   Form, Icon,Layout
@@ -19,6 +21,20 @@ class App extends Component {
     //this.onChangeText = this.onChangeText.bind(this);
 }
 
+showContentMenus(routes) {
+  let kq = null;
+  if (routes.length > 0) {
+    kq = routes.map((route, index) => (
+      <Route
+        key={index}
+        path={route.path}
+        exact={route.exact}
+        component={route.main}
+      />
+    ));
+  }
+  return kq;
+}
   
 
   toggle = () => {
@@ -29,6 +45,7 @@ class App extends Component {
   render() {
     
     return (
+      <Router>
       <Layout>
         <Siderbar collapsed={this.state.collapsed}/>
         <Layout>
@@ -38,13 +55,15 @@ class App extends Component {
               type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'}
               onClick={this.toggle}
             />
+            Demo React Redux Saga Api RouterDom
           </Header>
           <Content style={{margin: '24px 16px', padding: 24, background: '#fff', minHeight: 280,}}>
-            <ListNhanVien />
-
+            <Switch>{this.showContentMenus(routes)}</Switch>
+            {/* <ListNhanVien /> */}
           </Content>
         </Layout>
       </Layout>
+      </Router>
     );
   }
 }
