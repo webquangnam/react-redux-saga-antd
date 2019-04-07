@@ -29,8 +29,10 @@ export class Slidebar extends Component {
             </Link>
           </Menu.Item>
           <Menu.Item key="3">
-            <Icon type="upload" />
-            <span>nav 3</span>
+            <Link to="/Contact">
+              <Icon type="upload" />
+              <span>Contact</span>
+            </Link>
           </Menu.Item>
         </Menu>
       </Sider>

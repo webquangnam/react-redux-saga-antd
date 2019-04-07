@@ -4,7 +4,8 @@ export class About extends Component {
   render() {
     return (
       <div>
-        Giới thiệu
+        Đây là trang Giới thiệu.
+        Nội dung đang được cập nhật ...
       </div>
     )
   }

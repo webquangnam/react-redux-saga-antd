@@ -93,12 +93,10 @@ export class FormSubmit extends Component {
       console.log('item', item)
       if(this.props.edit){
         this.props.editNhanViens(item);
-        message.success('Sửa thành công');
-        message.success('Sửa thành công');
+        message.success('Cập nhật dữ liệu thành công');
       }else{
         this.props.addNhanViens(item);
-        message.success('Thêm thành công');
-        message.success('Thêm thành công');
+        message.success('Nhân viên : '+ item.Ten + ' đã được thêm vào hệ thống');
       }
       this.props.listNhanViens();
 

@@ -57,7 +57,7 @@ showContentMenus(routes) {
             />
             Demo React Redux Saga Api RouterDom
           </Header>
-          <Content style={{margin: '24px 16px', padding: 24, background: '#fff', minHeight: 280,}}>
+          <Content style={{margin: '24px 16px', padding: 24, background: '#fff', minHeight: '88vh',}}>
             <Switch>{this.showContentMenus(routes)}</Switch>
             {/* <ListNhanVien /> */}
           </Content>

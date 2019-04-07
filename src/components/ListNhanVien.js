@@ -51,7 +51,7 @@ deleteItem(item){
     cancelText: 'Không xóa',
     onOk() {
         that.props.delNhanViens(JSON.stringify(item));
-        message.success('Đã xóa');
+        message.success('Đã xóa nhân viên: ' + item.Ten);
         that.props.listNhanViens();
     },
     onCancel() {
@@ -96,7 +96,7 @@ changeStateEdit(){
     return (
         <div>
         <FormSubmit newItem ={this.state.newItem} edit={this.state.edit} changeStateEdit = {this.changeStateEdit}/>
-        <Table columns={this._columns} dataSource={dataAfter} rowKey={updateIndex} />
+        <Table columns={this._columns} dataSource={dataAfter} rowKey={updateIndex} pagination={{defaultPageSize:12}} />
         </div>
     )
   }
